@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de" manifest="demo.appcache">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Werde aktiv in Wien und f inde die passende Aktiviätet für jedes Wetter mit AKTI! - Der Aktivitäten App für Wien.">
+    <meta name="author" content="Rebecca Moritz">
+
+    <title>AKTIV! - Die Aktivitäten App für Wien</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/agency.css" rel="stylesheet">
+
+    <!-- Google Maps CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Installs the Firebase JavaScript library  -->
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">AKTIV!</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Aktivitäten</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Kartenansicht</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Willkommen bei der AKTIV! App für Wien!</div>
+                <div class="intro-heading">It's Nice To Meet You</div>
+                <a href="#about" class="page-scroll btn btn-xl">Erfahre mehr</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container aktivitaeten">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Aktivitäten</h2>
+                    <h3 class="section-subheading text-muted">Finde die passende Aktivität für jedes Wetter!</h3>
+                    <!-- Button um Aktivität für aktuelles Wetter abzufragen -->
+                        <button id="sortWetter" onclick="getLocation()" type="button" class="btn btn-xl">
+                           Aktivitäten für aktuelles Wetter anzeigen <span class="glyphicon glyphicon-cloud"></span>
+                        </button>
+                    <hr>
+                    <!-- Button um einen Kalendereintag zu machen (nur für App) -->
+                        <button class="btn btn-xl" onclick="calFunction()">Zum Kalender</button>
+                    <hr>
+                </div>
+            </div>
+            </div>
+              <div class="row">
+                <div id="aktivitaeten">
+                  <div class="col-md-4 col-sm-6 portfolio-item">
+                      <a href="#portfolioModal1" onclick="aktivitaetAnzeigen()" class="portfolio-link" data-toggle="modal">
+                          <div class="portfolio-hover">
+                              <div class="portfolio-hover-content">
+                                  <i class="fa fa-plus fa-3x"></i>
+                              </div>
+                          </div>
+                          <img src="img/portfolio/slider_laufen.jpg" class="img-responsive" alt="">
+                      </a>
+                          <div class="portfolio-caption">
+                            <h4>DummyData</h4>
+                            <p class="text-muted">... DummyData</p>
+                          </div>
+                    </div>
+                  </div>
+              </div>
+        </div>
+    </section>
+
+    <!-- Services/Kartenansicht Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Route planen</h2>
+                    <hr/>
+                    <h3 class="section-subheading text-muted">Berechne die Route zu deiner nächsten Aktivität!</h3>
+                </div>
+            </div>
+            <div class="row">
+              <form class="form-inline col-md-12" id="calculate-route" action="#" method="get">
+                <div class="form-group">
+                  <label>Standort: </label>
+                  <input type="text" id="txtFrom" class="form-control" placehoder=" Stephansplatz, Wien, Österreiche" style="width: 200px" />
+                  <label>Ziel: </label>
+                  <input type="text" id="txtTo" class="form-control" placehoder=" Karlsplatz, Wien, Österreiche" style="width: 200px" />
+                  </div>
+                  <button type="submit" class="btn btn-default" onclick="calculateRoute()">Route berechnen</button>
+              </form>
+              <p id="lblError" style="color: Red; font-size: 17px;" />
+            </div>
+            <div class="row">
+                <div class="col-xs-12" id="map-canvas"><!--map-canvas will be postioned here--></div>
+                <div id="dvPanel"></div>
+            <div class="col-xs-12" class="row">
+              <div id="dvDistance">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">About</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2009-2011</h4>
+                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>March 2011</h4>
+                                    <h4 class="subheading">An Agency is Born</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>December 2012</h4>
+                                    <h4 class="subheading">Transition to Full Service</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>July 2014</h4>
+                                    <h4 class="subheading">Phase Two Expansion</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part
+                                    <br>Of Our
+                                    <br>Story!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; AKTIV! 2014</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                  <div id="aktivDetail">
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+    <!-- LocalStorage JavaScript -->
+    <script type="text/javascript" src="js/aktivitaeten.js"></script>
+
+    <!-- Wetter API JavaScript -->
+    <script type="text/javascript" src="js/wetter.js"></script>
+
+    <!-- Aktivitäten JavaScript -->
+    <script type="text/javascript" src="js/aktivitaetenDetail.js"></script>
+
+    <!-- Google Maps API
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK4g6C-wLk65FEXu-4gN646h5QJRVuASE&callback=initMap"
+      async defer></script>-->
+    <!-- <script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>-->
+    <!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+    <!-- <script src="http:/maps.google.com/maps?file=api&v=2&key=AIzaSyBK4g6C-wLk65FEXu-4gN646h5QJRVuASE" type="text/javascript"></script> -->
+    <!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBK4g6C-wLk65FEXu-4gN646h5QJRVuASE&sensor=false" type="text/javascript"></script> -->
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script> -->
+    <!-- Google Maps JS -->
+    <script src="js/map.js"></script>
+
+    <!-- PhoneGap/Cordova -->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- Kalender Plugin -->
+    <script type="text/javascript" src="js/cal.js"></script>
+
+    <!-- InAppBrowser Plugin -->
+    <script type="text/javascript" src="js/statusbar.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+[
+   {
+      "id":"0",
+      "name":"Laufen",
+      "lat":"48.186249",
+      "longi":"16.367977",
+      "bildurl":"file:///Users/rebeccaannamoritz/Documents/Lehrgang/Abschlussprojekt/website/aktiveapp/www/img/portfolio/slider_laufen.jpg",
+      "einleitung":"... im Alois-Drasche Park",
+      "beschreibung":"Dieser Park bietet eine perfekte Laufroute und befindet sich in einer ruhigen Wohngegend des 4. Bezirkes, nahe dem G\u00fcrtel. Er bietet einen stillen Erholungsort, umrahmt von historisch-secessionistischen Fassaden. Hausg\u00e4rten grenzen direkt an den Park und flankieren ihn wie eine Halskrause.\r\n\r\nDurch den Park f\u00fchrt als imagin\u00e4re Achse die Kolschitzkygasse. Das Gel\u00e4nde f\u00e4llt vom G\u00fcrtel im S\u00fcden nach Norden in Richtung Kindertagesheim ab - f\u00fcr Besucherinnen und Besucher ein bequemes Gef\u00e4lle. Eindrucksvoll ist der Baumbestand, besonders die Gruppen Platanen.",
+      "link":"https:\/\/www.wien.gv.at\/umwelt\/parks\/anlagen\/alois-drasche.html",
+      "tempGrad":"neutral"
+   },
+   {
+      "id":"1",
+      "name":"Radfahren",
+      "lat":"48.21069",
+      "longi":"16.435007",
+      "bildurl":"file:///Users/rebeccaannamoritz/Documents/Lehrgang/Abschlussprojekt/website/aktiveapp/www/img/portfolio/slider_radfahren.jpg",
+      "einleitung":"... auf der Donauinsel",
+      "beschreibung":"Die Donauinsel ist ein eine Millionenstadt mit 42 Kilometer Strand und Naturschutzgebiet: Die Donauinsel ist nicht nur Teil des Hochwasserschutzes. Sie hat für Menschen, Tiere und Pflanzen viel zu bieten",
+      "link":"https://www.wien.gv.at/umwelt/wasserbau/donauinsel/",
+      "tempGrad":"heiss"
+   },
+   {
+      "id":"2",
+      "name":"Pilates",
+      "lat":"48.209206",
+      "longi":"16.372778",
+      "bildurl":"file:///Users/rebeccaannamoritz/Documents/Lehrgang/Abschlussprojekt/website/aktiveapp/www/img/portfolio/slider_pilates.jpg",
+      "einleitung":"... zu Hause",
+      "beschreibung":"Pilates zu Hause für Schlechtwettertage.",
+      "link":"https://www.youtube.com/channel/UCEB6B6DDIhktAWa1SJ-I4Ow",
+      "tempGrad":"kalt"
+   }
+]
